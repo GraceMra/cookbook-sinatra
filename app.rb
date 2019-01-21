@@ -1,12 +1,16 @@
-require "sinatra"
-require "sinatra/reloader" if development?
-require "pry-byebug"
-require "better_errors"
+require 'sinatra'
+require 'sinatra/reloader' if development?
+require 'pry-byebug'
+require 'better_errors'
 configure :development do
   use BetterErrors::Middleware
-  BetterErrors.application_root = File.expand_path('..', __FILE__)
+  BetterErrors.application_root = File.expand_path(__dir__)
 end
 
 get '/' do
-  'Hello Grace!'
+  erb :index
+end
+
+get '/about' do
+  erb :about
 end
